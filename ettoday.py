@@ -15,7 +15,7 @@ class EttodaySpider:
     def run(self, start_date, end_date):
         """
             generate "data/start_date-end_date.txt" :
-            record news contents for a given data range.
+            record news contents for a given date range.
         """
 
         filename = "data/%s-%s.txt" % (''.join(start_date.split('/')), ''.join(end_date.split('/')))
@@ -28,7 +28,7 @@ class EttodaySpider:
                 data = {"tag": tag, "date": date, "title": title, "content": content}
                 fout.write(json.dumps(data, ensure_ascii=False) + '\n')
 
-                # for the sake of getting blocked
+                # prevent getting blocked
                 time.sleep(0.5)
 
     def get_news_list(self, start_date, end_date):
