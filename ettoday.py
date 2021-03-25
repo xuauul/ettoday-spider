@@ -29,7 +29,7 @@ class EttodaySpider:
                 fout.write(json.dumps(data, ensure_ascii=False) + '\n')
 
                 # prevent getting blocked
-                time.sleep(0.5)
+                # time.sleep(0.5)
 
     def get_news_list(self, start_date, end_date):
         """ get a list of news links for a given date range. """
@@ -63,7 +63,7 @@ class EttodaySpider:
         try:
             title = soup.select_one("h1.title").string
             content = [p.string for p in soup.select("div.story > p")
-                        if p.find(text=True, recursive=False)]
+                        if p.find(text=True, recursive=False) and p.string]
         except:
             title, content = None, None
 
